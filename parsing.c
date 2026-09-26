@@ -6,27 +6,37 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:41:07 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/09/23 21:30:39 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/09/26 19:36:11 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int number(char *argument, stack)
+int p_number(char *nptr, t_stack **stack_a)
 {
-	int j;
+	int		sign;
+	long	number;
+	int		is_empty;
 
-	// go till the top of the stack
-	j = 0;
-	while (argument[j]) // check the number
+	sign = 1;
+	number = 0;
+	is_empty = 1;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		if (j == 0)
-		{
-			if ( || )
-		}
-		
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	ft_atoi(argument[i])
+	while (ft_isdigit(*nptr))
+	{
+		is_empty = 0;
+		number = number * 10 + (*nptr++ - '0') * sign;
+		if (number > INT_MAX || number < INT_MIN)
+			return (1);
+	}
+	if (*nptr || is_empty || is_duplicate(number, stack_a))
+		return (1);
+	return (0);
 }
 
 int p_flags(char *argument, t_flags *flags)
@@ -42,15 +52,15 @@ int p_flags(char *argument, t_flags *flags)
     else if (!ft_strcmp(argument, "--bench"))
     {
         flags->bench = 1;
-        return (1);
+        return (0);
     }
     else
-        return (0);
+        return (1);
     flags->f_count++;
-    return (1);
+    return (0);
 }
 
-int parsing(int argc, char **argv, t_stack **stack, t_flags *flags)
+int parsing(int argc, char **argv, t_stack **stack_a, t_flags *flags)
 {
 	char **argument;
 	int i;
@@ -59,16 +69,16 @@ int parsing(int argc, char **argv, t_stack **stack, t_flags *flags)
 	{
 		argument = ft_split(argv[argc], ' ');
 		i = 0;
-		while(argument[i] != NULL)
+		while(argument[i])
             i++;
-		while(--i >= 0)
+		while(--i >= 0 || !argument[0])
 		{
-			if ((!p_flags(argument[i], flags) || flags->f_count > 1)
-				&& !number(argument[i], stack))
+			if (!argument[0] || ((p_flags(argument[i], flags)
+				|| flags->f_count > 1))
+				&& p_number(argument[i], stack_a))
 			{
-				// function that cleans the linked list
 				free_split(argument);
-				// Print "Error\n" to stderr
+				free_stack(stack_a);
 				return (1);
 			}
 		}
