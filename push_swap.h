@@ -18,3 +18,4 @@ typedef struct s_flags
 int parsing(int argc, char **argv, t_stack **stack, t_flags *flags);
 void print_error();
 int	ft_strcmp(char *s1, char *s2);
+void free_split(char **split_arr);

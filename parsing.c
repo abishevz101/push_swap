@@ -10,14 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void free_split(char **split_arr)
-{
-    int i;
+#include "push_swap.h"
 
-	i = 0;
-    while (split_arr[i])
-        free(split_arr[i++]);
-    free(split_arr);
+int number(char *argument, stack)
+{
+	int j;
+
+	// go till the top of the stack
+	j = 0;
+	while (argument[j]) // check the number
+	{
+		if (j == 0)
+		{
+			if ( || )
+		}
+		
+	}
+	ft_atoi(argument[i])
 }
 
 int p_flags(char *argument, t_flags *flags)
