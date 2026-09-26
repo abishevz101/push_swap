@@ -6,7 +6,7 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 16:07:26 by zabishev          #+#    #+#             */
-/*   Updated: 2026/09/23 17:21:09 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/09/23 17:58:23 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,16 @@ void	add_to_stack(t_stack **head, int value)
 	mem -> value = value;//значит пое value внутри структуры, на которую указывает mem. То есть мы обращаемся к конкретной ячейке памяти внутри созданного узла. К той ее части, где хранится число.
 	mem -> next = *head;
 	*head = mem;	
+}
+
+
+void	add_to_stack_end(t_stack **head, int value)
+{
+	size_t	count;
+
+	count = 0;
+	while(*head != NULL)
+	{
+		count = count + 1;
+	}
 }
