@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:27 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/01 14:09:49 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:56:09 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int find_min_index(t_stack *a)
     return (min_index);
 }
 
-void	rotate_min_to_top(t_stack **a)
+void	rotate_min_to_top(t_stack **a, t_flags *flags)
 {
 	int	index;
 	int	size;
@@ -49,7 +49,7 @@ void	rotate_min_to_top(t_stack **a)
 	{
 		while (i < index)
 		{
-			ra(a, 1);
+			ra(a, 1, flags);
 			i++;
 		}
 	}
@@ -57,21 +57,21 @@ void	rotate_min_to_top(t_stack **a)
 	{
 		while(i < size - index)
 		{
-			rra(a, 1);
+			rra(a, 1, flags);
 			i++;
 		}
 	}
 }
 
-void	min_extraction(t_stack **a, t_stack **b)
+void	min_extraction(t_stack **a, t_stack **b, t_flags *flags)
 {
 	while (stack_size(*a) > 1)
 	{
 		rotate_min_to_top(a);
-		pb(a, b);
+		pb(a, b, flags);
 	}
 	while (*b != NULL)
 	{
-		pa(a, b);
+		pa(a, b, flags);
 	}
 }

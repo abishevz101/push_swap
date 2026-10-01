@@ -6,13 +6,13 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 18:02:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/01 14:14:27 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 17:18:42 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack **a, int rule)
+void	sa(t_stack **a, int rule, t_flags *flags)
 {
 	t_stack	*b;
 	t_stack	*c;
@@ -24,11 +24,12 @@ void	sa(t_stack **a, int rule)
 	*a = (*a)->next;
 	(*a)->next = b;
 	b->next = c;
-	if (rule)
+	if (rule && !flags->bench)
 		write(1, "sa\n", 3);
+	flags->op_count++;
 }
 
-void	sb(t_stack **b, int rule)
+void	sb(t_stack **b, int rule, t_flags *flags)
 {
 	t_stack	*a;
 	t_stack	*c;
@@ -40,18 +41,21 @@ void	sb(t_stack **b, int rule)
 	*b = (*b)->next;
 	(*b)->next = a;
 	a->next = c;
-	if (rule)
+	if (rule && !flags->bench)
 		write(1, "sb\n", 3);
+	flags->op_count++;
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, t_flags *flags)
 {
-	sa(a, 0);
-	sb(b, 0);
-	write(1, "ss\n", 3);
+	sa(a, 0, flags);
+	sb(b, 0, flags);
+	if (!flags->bench)
+		write(1, "ss\n", 3);
+	flags->op_count++;
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, t_flags *flags)
 {
 	t_stack	*s;
 
@@ -61,10 +65,12 @@ void	pa(t_stack **a, t_stack **b)
 	*b = s->next;
 	s->next = *a;
 	*a = s;
-	write(1, "pa\n", 3);
+	if (!flags->bench)
+		write(1, "pa\n", 3);
+	flags->op_count++;
 }
 
-void pb(t_stack **a, t_stack **b)
+void pb(t_stack **a, t_stack **b, t_flags *flags)
 {
 	t_stack *s;
 
@@ -74,10 +80,12 @@ void pb(t_stack **a, t_stack **b)
 	*a = s->next;
 	s->next = *b;
 	*b = s;
-	write(1, "pb\n", 3);
+	if (!flags->bench)
+		write(1, "pb\n", 3);
+	flags->op_count++;
 }
 
-void ra(t_stack **a, int rule)
+void ra(t_stack **a, int rule, t_flags *flags)
 {
 	t_stack *first;
 	t_stack *last;
@@ -91,11 +99,12 @@ void ra(t_stack **a, int rule)
 	*a = first->next;
 	last->next = first;
 	first->next = NULL;
-	if (rule)
+	if (rule && !flags->bench)
 		write(1, "ra\n", 3);
+	flags->op_count++;
 }
 
-void rb(t_stack **b, int rule)
+void rb(t_stack **b, int rule, t_flags *flags)
 {
 	t_stack *first;
 	t_stack *last;
@@ -109,16 +118,19 @@ void rb(t_stack **b, int rule)
 	*b = first->next;
 	last->next = first;
 	first->next = NULL;
-	if (rule)
+	if (rule && !flags->bench)
 		write(1, "rb\n", 3);
+	flags->op_count++;
 }
-void rr(t_stack **a, t_stack **b)
+void rr(t_stack **a, t_stack **b, t_flags *flags)
 {
-	ra(a, 0);
-	rb(b, 0);
-	write(1, "rr\n", 3);
+	ra(a, 0, flags);
+	rb(b, 0, flags);
+	if (!flags->bench)
+		write(1, "rr\n", 3);
+	flags->op_count++;
 }
-void	rra(t_stack **a, int rule)
+void	rra(t_stack **a, int rule, t_flags *flags)
 {
 	t_stack	*prev;
 	t_stack	*last;
@@ -132,10 +144,11 @@ void	rra(t_stack **a, int rule)
 	prev->next = NULL;
 	last->next = *a;
 	*a = last;
-	if (rule)
+	if (rule && !flags->bench)
 		write(1, "rra\n", 4);
+	flags->op_count++;
 }
-void	rrb(t_stack **b, int rule)
+void	rrb(t_stack **b, int rule, t_flags *flags)
 {
 	t_stack	*prev;
 	t_stack	*last;
@@ -149,13 +162,16 @@ void	rrb(t_stack **b, int rule)
 	prev->next = NULL;
 	last->next = *b;
 	*b = last;
-	if (rule)
+	if (rule && !flags->bench)
 		write(1, "rrb\n", 4);
+	flags->op_count++;
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, t_flags *flags)
 {
-	rra(a, 0);
-	rrb(b, 0);
-	write(1, "rrr\n", 4);
+	rra(a, 0, flags);
+	rrb(b, 0, flags);
+	if (!flags->bench)
+		write(1, "rrr\n", 4);
+	flags->op_count++;
 }

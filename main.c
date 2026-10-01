@@ -6,16 +6,19 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/01 14:16:31 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 17:22:28 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void print_error()
-// {
-// 	write(2, "Error\n", 6);
-// }
+void fill_flags(t_flags *flags)
+{
+	flags->flag = 'a';
+	flags->bench = 0;
+	flags->f_count = 0;
+	flags->op_count = 0;
+}
 
 double disorder_metric(t_stack **stack_a)
 {
@@ -56,14 +59,14 @@ void run_algorithm(t_stack **a, t_flags flags)
 	if (flags.flag == 'a')
 	{
 		if (disorder < 0.2)
-			min_extraction(a, &b);
+			min_extraction(a, &b, &flags);
 		else if (disorder < 0.5)
 			// medium
 		else
 			// complex
 	}
 	else if (flags.flag == 's')
-		min_extraction(a, &b);
+		min_extraction(a, &b, &flags);
 	else if (flags.flag == 'm')
 		// medium
 	else
@@ -74,11 +77,10 @@ int main(int argc, char **argv)
 {
 	t_stack *stack_a;
 	t_flags flags;
+	char	*operations;
 
 	stack_a = NULL;
-	flags.flag = 'a';
-	flags.bench = 0;
-	flags.f_count = 0;
+	fill_flags(flags);
 	if (argc == 1)
 		return 0;
 	if (parsing(argc, argv, &stack_a, &flags))
@@ -87,6 +89,13 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	run_algorithm(&stack_a, flags);
+	if (flags.bench)
+	{
+		operations = ft_itoa(flags.op_count);
+		write(1, "Total operations: ", 18);
+		write(1, operations, ft_strlen(operations));
+		free(operations);
+	}
 	free_stack(&stack_a);
 	return 0;
 }
