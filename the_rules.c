@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_rules.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 18:02:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/01 17:18:42 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 17:30:01 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ss(t_stack **a, t_stack **b, t_flags *flags)
 	sb(b, 0, flags);
 	if (!flags->bench)
 		write(1, "ss\n", 3);
-	flags->op_count++;
+	flags->op_count--;
 }
 
 void	pa(t_stack **a, t_stack **b, t_flags *flags)
@@ -128,7 +128,7 @@ void rr(t_stack **a, t_stack **b, t_flags *flags)
 	rb(b, 0, flags);
 	if (!flags->bench)
 		write(1, "rr\n", 3);
-	flags->op_count++;
+	flags->op_count--;
 }
 void	rra(t_stack **a, int rule, t_flags *flags)
 {
@@ -173,5 +173,5 @@ void	rrr(t_stack **a, t_stack **b, t_flags *flags)
 	rrb(b, 0, flags);
 	if (!flags->bench)
 		write(1, "rrr\n", 4);
-	flags->op_count++;
+	flags->op_count--;
 }

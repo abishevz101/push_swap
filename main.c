@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/01 17:22:28 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 17:26:37 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 	char	*operations;
 
 	stack_a = NULL;
-	fill_flags(flags);
+	fill_flags(&flags);
 	if (argc == 1)
 		return 0;
 	if (parsing(argc, argv, &stack_a, &flags))
