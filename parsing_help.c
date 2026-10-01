@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 17:05:08 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/09/26 19:35:40 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 13:52:15 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int is_duplicate(t_stack **stack_a, int number)
             return (1);
 		temp = temp->next;
 	}
-	if (add_to_stack(number, stack_a))
+	if (add_to_stack(stack_a, number))
         return (1);
     return (0);
 }

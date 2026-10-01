@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_algorithm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:27 by zabishev          #+#    #+#             */
-/*   Updated: 2026/09/28 21:17:29 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/01 14:09:49 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	rotate_min_to_top(t_stack **a)
 	{
 		while (i < index)
 		{
-			ra(a);
+			ra(a, 1);
 			i++;
 		}
 	}
@@ -57,7 +57,7 @@ void	rotate_min_to_top(t_stack **a)
 	{
 		while(i < size - index)
 		{
-			rra(a);
+			rra(a, 1);
 			i++;
 		}
 	}

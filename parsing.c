@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:41:07 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/09/26 19:36:11 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 13:52:38 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int p_number(char *nptr, t_stack **stack_a)
 		if (number > INT_MAX || number < INT_MIN)
 			return (1);
 	}
-	if (*nptr || is_empty || is_duplicate(number, stack_a))
+	if (*nptr || is_empty || is_duplicate(stack_a, number))
 		return (1);
 	return (0);
 }

@@ -6,16 +6,16 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/09/26 19:59:07 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 14:16:31 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_error()
-{
-	write(2, "Error\n", 6);
-}
+// void print_error()
+// {
+// 	write(2, "Error\n", 6);
+// }
 
 double disorder_metric(t_stack **stack_a)
 {
@@ -26,7 +26,7 @@ double disorder_metric(t_stack **stack_a)
 
     mistakes = 0;
     total_pairs = 0;
-    current = stack;
+    current = *stack_a;
     while (current)
     {
         temp = current->next;
@@ -44,6 +44,32 @@ double disorder_metric(t_stack **stack_a)
 	return ((double)mistakes / total_pairs);
 }
 
+void run_algorithm(t_stack **a, t_flags flags)
+{
+	t_stack *b;
+	double	disorder;
+	
+	b = NULL;
+	disorder = disorder_metric(a);
+	if (disorder == 0.0)
+		return ;
+	if (flags.flag == 'a')
+	{
+		if (disorder < 0.2)
+			min_extraction(a, &b);
+		else if (disorder < 0.5)
+			// medium
+		else
+			// complex
+	}
+	else if (flags.flag == 's')
+		min_extraction(a, &b);
+	else if (flags.flag == 'm')
+		// medium
+	else
+		// complex
+}
+
 int main(int argc, char **argv)
 {
 	t_stack *stack_a;
@@ -57,10 +83,11 @@ int main(int argc, char **argv)
 		return 0;
 	if (parsing(argc, argv, &stack_a, &flags))
 	{
-		print_error();
+		write(2, "Error\n", 6);
 		return 1;
 	}
-	disorder_metric(&stack_a);
+	run_algorithm(&stack_a, flags);
+	free_stack(&stack_a);
 	return 0;
 }
 

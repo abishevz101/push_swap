@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   the_rules.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 18:02:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/09/26 15:00:21 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/01 14:14:27 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack **a)
+void	sa(t_stack **a, int rule)
 {
 	t_stack	*b;
 	t_stack	*c;
@@ -24,9 +24,11 @@ void	sa(t_stack **a)
 	*a = (*a)->next;
 	(*a)->next = b;
 	b->next = c;
+	if (rule)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **b)
+void	sb(t_stack **b, int rule)
 {
 	t_stack	*a;
 	t_stack	*c;
@@ -38,12 +40,15 @@ void	sb(t_stack **b)
 	*b = (*b)->next;
 	(*b)->next = a;
 	a->next = c;
+	if (rule)
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
-	sa(a);
-	sb(b);
+	sa(a, 0);
+	sb(b, 0);
+	write(1, "ss\n", 3);
 }
 
 void	pa(t_stack **a, t_stack **b)
@@ -56,6 +61,7 @@ void	pa(t_stack **a, t_stack **b)
 	*b = s->next;
 	s->next = *a;
 	*a = s;
+	write(1, "pa\n", 3);
 }
 
 void pb(t_stack **a, t_stack **b)
@@ -68,9 +74,10 @@ void pb(t_stack **a, t_stack **b)
 	*a = s->next;
 	s->next = *b;
 	*b = s;
+	write(1, "pb\n", 3);
 }
 
-void ra(t_stack **a)
+void ra(t_stack **a, int rule)
 {
 	t_stack *first;
 	t_stack *last;
@@ -84,9 +91,11 @@ void ra(t_stack **a)
 	*a = first->next;
 	last->next = first;
 	first->next = NULL;
+	if (rule)
+		write(1, "ra\n", 3);
 }
 
-void rb(t_stack **b)
+void rb(t_stack **b, int rule)
 {
 	t_stack *first;
 	t_stack *last;
@@ -100,13 +109,16 @@ void rb(t_stack **b)
 	*b = first->next;
 	last->next = first;
 	first->next = NULL;
+	if (rule)
+		write(1, "rb\n", 3);
 }
 void rr(t_stack **a, t_stack **b)
 {
-	ra(a);
-	rb(b);
+	ra(a, 0);
+	rb(b, 0);
+	write(1, "rr\n", 3);
 }
-void	rra(t_stack **a)
+void	rra(t_stack **a, int rule)
 {
 	t_stack	*prev;
 	t_stack	*last;
@@ -120,8 +132,10 @@ void	rra(t_stack **a)
 	prev->next = NULL;
 	last->next = *a;
 	*a = last;
+	if (rule)
+		write(1, "rra\n", 4);
 }
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, int rule)
 {
 	t_stack	*prev;
 	t_stack	*last;
@@ -135,10 +149,13 @@ void	rrb(t_stack **b)
 	prev->next = NULL;
 	last->next = *b;
 	*b = last;
+	if (rule)
+		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	rra(a);
-	rrb(b);
+	rra(a, 0);
+	rrb(b, 0);
+	write(1, "rrr\n", 4);
 }

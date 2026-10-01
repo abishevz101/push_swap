@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 18:55:21 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/09/26 19:36:25 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/01 13:45:31 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,19 @@ void	free_stack(t_stack **stack)
 		*stack = temp;
 	}
 }
+
+size_t	stack_size(t_stack *head)
+{
+	size_t	count;
+
+	count = 0;
+	while(head != NULL)
+	{
+		count = count + 1;
+		head = head->next;
+	}
+	return (count);
+}
+
+	// count++;
+	// count+=1;
