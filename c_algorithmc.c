@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_algorithmc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:16:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/03 15:16:23 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/03 16:11:12 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_bits(int size)
 	return (bit);
 }
 
-void	radix_sort(t_stack **a, t_stack *b)
+void	radix_sort(t_stack **a, t_stack *b, t_bench *bench)
 {
 	t_stack			*current;
 	long long int	size;
@@ -65,6 +65,7 @@ void	radix_sort(t_stack **a, t_stack *b)
 	long long int	i;
 	long long int	j;
 	
+	bench->complexity = "O(nlogn)";
 	current = *a;	
 	size = stack_size(*a);
 	if (size < 1);

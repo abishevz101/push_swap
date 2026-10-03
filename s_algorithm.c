@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:27 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/01 15:56:09 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/03 19:53:52 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int find_min_index(t_stack *a)
     return (min_index);
 }
 
-void	rotate_min_to_top(t_stack **a, t_flags *flags)
+void	rotate_min_to_top(t_stack **a, t_bench *bench)
 {
 	int	index;
 	int	size;
@@ -49,7 +49,7 @@ void	rotate_min_to_top(t_stack **a, t_flags *flags)
 	{
 		while (i < index)
 		{
-			ra(a, 1, flags);
+			ra(a, 1, bench);
 			i++;
 		}
 	}
@@ -57,21 +57,22 @@ void	rotate_min_to_top(t_stack **a, t_flags *flags)
 	{
 		while(i < size - index)
 		{
-			rra(a, 1, flags);
+			rra(a, 1, bench);
 			i++;
 		}
 	}
 }
 
-void	min_extraction(t_stack **a, t_stack **b, t_flags *flags)
+void	min_extraction(t_stack **a, t_stack **b, t_bench *bench)
 {
+	bench->complexity = "O(n^2)";
 	while (stack_size(*a) > 1)
 	{
-		rotate_min_to_top(a);
-		pb(a, b, flags);
+		rotate_min_to_top(a, bench);
+		pb(a, b, bench);
 	}
 	while (*b != NULL)
 	{
-		pa(a, b, flags);
+		pa(a, b, bench);
 	}
 }

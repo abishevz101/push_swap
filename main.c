@@ -3,21 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/01 17:26:37 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/03 19:56:23 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void fill_flags(t_flags *flags)
+void fill_structures(t_flags *flags, t_bench *bench)
 {
 	flags->flag = 'a';
 	flags->bench = 0;
 	flags->f_count = 0;
-	flags->op_count = 0;
+	bench->sa = 0;
+	bench->sb = 0;
+	bench->ss = 0;
+	bench->pa = 0;
+	bench->pb = 0;
+	bench->ra = 0;
+	bench->rb = 0;
+	bench->rr = 0;
+	bench->rra = 0;
+	bench->rrb = 0;
+	bench->rrr = 0;
 }
 
 double disorder_metric(t_stack **stack_a)
@@ -47,7 +57,7 @@ double disorder_metric(t_stack **stack_a)
 	return ((double)mistakes / total_pairs);
 }
 
-void run_algorithm(t_stack **a, t_flags flags)
+double run_algorithm(t_stack **a, t_flags flags, t_bench *bench)
 {
 	t_stack *b;
 	double	disorder;
@@ -55,32 +65,33 @@ void run_algorithm(t_stack **a, t_flags flags)
 	b = NULL;
 	disorder = disorder_metric(a);
 	if (disorder == 0.0)
-		return ;
+		return (0.0);
 	if (flags.flag == 'a')
 	{
 		if (disorder < 0.2)
-			min_extraction(a, &b, &flags);
+			min_extraction(a, &b, bench);
 		else if (disorder < 0.5)
 			// medium
 		else
 			// complex
 	}
 	else if (flags.flag == 's')
-		min_extraction(a, &b, &flags);
+		min_extraction(a, &b, bench);
 	else if (flags.flag == 'm')
 		// medium
 	else
 		// complex
+	return (disorder * 100 + 0.5);
 }
 
 int main(int argc, char **argv)
 {
 	t_stack *stack_a;
 	t_flags flags;
-	char	*operations;
+	t_bench bench;
 
 	stack_a = NULL;
-	fill_flags(&flags);
+	fill_structures(&flags, &bench);
 	if (argc == 1)
 		return 0;
 	if (parsing(argc, argv, &stack_a, &flags))
@@ -88,13 +99,12 @@ int main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return 1;
 	}
-	run_algorithm(&stack_a, flags);
+	bench.bench = flags.bench;
+	bench.disorder = run_algorithm(&stack_a, flags, &bench);
 	if (flags.bench)
 	{
-		operations = ft_itoa(flags.op_count);
-		write(1, "Total operations: ", 18);
-		write(1, operations, ft_strlen(operations));
-		free(operations);
+		bench.strategy = flags.flag;
+		display_bench(&bench);
 	}
 	free_stack(&stack_a);
 	return 0;
@@ -119,4 +129,7 @@ Partly-done: 5. Acceptence of flags
 		more: Error
 
 ~*~*~*~ Parcing ~*~*~*~
+
+~*~*~*~ Bench ~*~*~*~
+BENCH TO ERROR
 */
