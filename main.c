@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/03 19:56:23 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/03 20:25:27 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ double run_algorithm(t_stack **a, t_flags flags, t_bench *bench)
 	if (flags.flag == 'a')
 	{
 		if (disorder < 0.2)
-			min_extraction(a, &b, bench);
+			min_extraction(a, b, bench);
 		else if (disorder < 0.5)
 			// medium
 		else
 			// complex
 	}
 	else if (flags.flag == 's')
-		min_extraction(a, &b, bench);
+		min_extraction(a, b, bench);
 	else if (flags.flag == 'm')
 		// medium
 	else

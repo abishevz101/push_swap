@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:16:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/03 16:11:12 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/03 20:25:49 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	count_smaller(t_stack *a, int target)
 {
 	long long int	count;
-	t_stack			*current;//промежуточный указатель, гуляющий по списку
+	t_stack			*current;
 
 	count = 0;
 	current = a;
@@ -51,46 +51,37 @@ int	get_bits(int size)
 	count = 1;
 	while (count < size)
 	{
-		bit = bit ++;
+		bit = bit++;
 		count = count * 2;
 	}
 	return (bit);
 }
 
-void	radix_sort(t_stack **a, t_stack *b, t_bench *bench)
+void	radix_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	t_stack			*current;
 	long long int	size;
 	long long int 	bits;
 	long long int	i;
 	long long int	j;
 	
 	bench->complexity = "O(nlogn)";
-	current = *a;	
 	size = stack_size(*a);
-	if (size < 1);
+	if (size < 1)
 		return ;
 	range_numbers(*a);
 	bits = get_bits(size);
-	i = 0;
-	while (i < bits)
+	i = -1;
+	while (++i < bits)
 	{
-		j = 0;
-		while (j < size)
+		j = -1;
+		while (++j < size)
 		{
-			current = *a;
-			if ((current->value >> i) & 1)
-			{
-				ra(a);//dopisat'
-			}
+			if (((*a)->value >> i) & 1)
+				ra(a, 1, bench);
 			else
-				pb(a, b);//dopisat'
-			j++;
+				pb(a, b, bench);
 		}
-		while (b != NULL)
-		{
-			pa(a, b);//dopisat'
-		}
-		i++;
+		while (*b != NULL)
+			pa(a, b, bench);
 	}
 }
