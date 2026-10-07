@@ -6,11 +6,27 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:16:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 20:09:41 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/07 21:16:28 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
+
+int	count_smaller(t_stack *a, int target)
+{
+	long long int	count;
+	t_stack			*current;
+
+	count = 0;
+	current = a;
+	while (current != NULL)
+	{
+		if (current->value < target)
+			count++;
+		current = current->next;
+	}
+	return (count);
+}
 
 static int	*collect_ranks(t_stack *a, size_t size)
 {
@@ -32,27 +48,11 @@ static int	*collect_ranks(t_stack *a, size_t size)
 	return (ranks);
 }
 
-int	count_smaller(t_stack *a, int target)
-{
-	long long int	count;
-	t_stack			*current;
-
-	count = 0;
-	current = a;
-	while (current != NULL)
-	{
-		if (current->value < target)
-			count++;
-		current = current->next;
-	}
-	return (count);
-}
-
 void	range_numbers(t_stack *a)
 {
 	t_stack				*current;
 	size_t				i;
-	int					ranks;
+	int					*ranks;
 
 	ranks = collect_ranks(a, stack_size(a));
 	if (!ranks)
