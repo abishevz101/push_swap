@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 18:55:21 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/01 13:45:31 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 20:44:21 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	add_to_stack(t_stack **head, int value)
 {
 	t_stack	*mem;
-	
+
 	mem = malloc(sizeof(t_stack));
 	if (!mem)
 		return (1);
@@ -42,13 +42,10 @@ size_t	stack_size(t_stack *head)
 	size_t	count;
 
 	count = 0;
-	while(head != NULL)
+	while (head != NULL)
 	{
 		count = count + 1;
 		head = head->next;
 	}
 	return (count);
 }
-
-	// count++;
-	// count+=1;

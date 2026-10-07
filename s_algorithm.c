@@ -6,34 +6,34 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:27 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/03 19:53:52 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 20:46:05 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_min_index(t_stack *a)
+int	find_min_index(t_stack *a)
 {
-    t_stack *current;
-    int     min;
-	int	min_index;
-	int	i;
-	
+	t_stack	*current;
+	int		min;
+	int		min_index;
+	int		i;
+
 	min_index = 0;
 	i = 0;
-    min = a->value;
-    current = a;
-    while (current != NULL)
-    {
-        if (current->value < min)
+	min = a->value;
+	current = a;
+	while (current != NULL)
+	{
+		if (current->value < min)
 		{
-            min = current->value;
+			min = current->value;
 			min_index = i;
 		}
-        current = current->next;
+		current = current->next;
 		i++;
-    }
-    return (min_index);
+	}
+	return (min_index);
 }
 
 void	rotate_min_to_top(t_stack **a, t_bench *bench)
@@ -45,7 +45,7 @@ void	rotate_min_to_top(t_stack **a, t_bench *bench)
 	i = 0;
 	index = find_min_index(*a);
 	size = stack_size(*a);
-	if (index <= size/2)
+	if (index <= size / 2)
 	{
 		while (i < index)
 		{
@@ -55,7 +55,7 @@ void	rotate_min_to_top(t_stack **a, t_bench *bench)
 	}
 	else
 	{
-		while(i < size - index)
+		while (i < size - index)
 		{
 			rra(a, 1, bench);
 			i++;

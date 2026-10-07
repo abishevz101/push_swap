@@ -3,7 +3,9 @@ FLAGS = -Wall -Wextra -Werror
 FILES = main.c \
 		parsing.c \
 		stack_management.c \
-		the_rules.c \
+		the_rules_s.c \
+		the_rules_rr.c \
+		the_rules_rrr.c \
 		s_algorithm.c \
 		m_algorithm.c \
 		m_algorithm_help.c \
