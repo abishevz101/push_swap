@@ -6,7 +6,7 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 20:42:10 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/07 21:17:10 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/07 21:19:49 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int		chnk_max(long long int size, long long int chunk);
 int		chnk_min(long long int size, long long int chunk);
 int		int_sqrt(int n);
 void	range_numbers(t_stack *a);
-int	count_smaller(t_stack *a, int target)
+int	count_smaller(t_stack *a, int target)ж
 
 #endif
