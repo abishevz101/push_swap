@@ -6,7 +6,7 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 18:02:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/03 16:38:54 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 12:32:24 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	rra(t_stack **a, int rule, t_bench *bench)
 	if (rule)
 	{
 		if (!bench->bench)
-			write(1, "rra\n", 3);
+			write(1, "rra\n", 4);
 		bench->rra++;
 	}
 }
@@ -180,7 +180,7 @@ void	rrb(t_stack **b, int rule, t_bench *bench)
 	if (rule)
 	{
 		if (!bench->bench)
-			write(1, "rrb\n", 3);
+			write(1, "rrb\n", 4);
 		bench->rrb++;
 	}
 }

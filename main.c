@@ -6,11 +6,21 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/03 20:25:27 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 13:21:38 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void free_split(char **split_arr)
+{
+    int i;
+
+	i = 0;
+    while (split_arr[i])
+        free(split_arr[i++]);
+    free(split_arr);
+}
 
 void fill_structures(t_flags *flags, t_bench *bench)
 {
@@ -68,20 +78,20 @@ double run_algorithm(t_stack **a, t_flags flags, t_bench *bench)
 		return (0.0);
 	if (flags.flag == 'a')
 	{
-		if (disorder < 0.2)
-			min_extraction(a, b, bench);
+		if (stack_size(*a) <= 5 || disorder < 0.2)
+			min_extraction(a, &b, bench);
 		else if (disorder < 0.5)
-			// medium
+			chunk_sort(a, &b, bench);
 		else
-			// complex
+			radix_sort(a, &b, bench);
 	}
 	else if (flags.flag == 's')
-		min_extraction(a, b, bench);
+		min_extraction(a, &b, bench);
 	else if (flags.flag == 'm')
-		// medium
+		chunk_sort(a, &b, bench);
 	else
-		// complex
-	return (disorder * 100 + 0.5);
+		radix_sort(a, &b, bench);
+	return (disorder * 100);
 }
 
 int main(int argc, char **argv)

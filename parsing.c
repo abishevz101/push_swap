@@ -6,11 +6,38 @@
 /*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:41:07 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/01 17:22:20 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 12:22:56 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int is_duplicate(t_stack **stack_a, int number)
+{
+    t_stack *temp;
+
+    temp = *stack_a;
+    while (temp)
+	{
+        if (temp->value == number)
+            return (1);
+		temp = temp->next;
+	}
+	if (add_to_stack(stack_a, number))
+        return (1);
+    return (0);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (1)
+	{
+		if (*s1 != *s2 || !*s1)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		s1++;
+		s2++;
+	}
+}
 
 int p_number(char *nptr, t_stack **stack_a)
 {
@@ -73,9 +100,9 @@ int parsing(int argc, char **argv, t_stack **stack_a, t_flags *flags)
             i++;
 		while(--i >= 0 || !argument[0])
 		{
-			if (!argument[0] || ((p_flags(argument[i], flags)
+			if (!argument[0] || (((p_flags(argument[i], flags)
 				|| flags->f_count > 1))
-				&& p_number(argument[i], stack_a))
+				&& p_number(argument[i], stack_a)))
 			{
 				free_split(argument);
 				free_stack(stack_a);

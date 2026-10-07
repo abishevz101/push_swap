@@ -1,6 +1,14 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-FILES = #WRITE THE FILES AT THE END
+FILES = main.c \
+		parsing.c \
+		stack_management.c \
+		the_rules.c \
+		s_algorithm.c \
+		m_algorithm.c \
+		m_algorithm_help.c \
+		c_algorithm.c \
+		bench.c
 NAME = push_swap
 OBJS = $(FILES:.c=.o)
 

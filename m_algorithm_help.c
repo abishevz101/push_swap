@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_algorithm_help.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:31 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/03 21:53:05 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/07 12:29:57 by vkyryche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	int_sqrt(int n)
 	return (k);
 }
 
-static int	chnk_min(t_stack *a, long long int	chunk)
+int	chnk_min(t_stack *a, long long int	chunk)
 {
 	long long int	chunk_min;
 	long long int	chunk_size;
@@ -38,7 +38,7 @@ static int	chnk_min(t_stack *a, long long int	chunk)
 	return (chunk_min);
 }
 
-static int	chnk_max(t_stack *a, long long int chunk)
+int	chnk_max(t_stack *a, long long int chunk)
 {
 	long long int	chunk_max;
 	long long int	chunk_size;
@@ -69,7 +69,7 @@ int	find_in_chunk(t_stack *a, int min, int max)
 	return (-1);
 }
 
-void	rotate_to_index(t_stack **a, int index)
+void	rotate_to_index(t_stack **a, int index, t_bench *bench)
 {
 	int	size;
 	int	i;
@@ -80,7 +80,7 @@ void	rotate_to_index(t_stack **a, int index)
 	{
 		while (i < index)
 		{
-			ra(a);// dopisat
+			ra(a, 1, bench);
 			i++;
 		}
 	}
@@ -88,7 +88,7 @@ void	rotate_to_index(t_stack **a, int index)
 	{
 		while (i < size - index)
 		{
-			rra(a);//dopisat
+			rra(a, 1, bench);
 			i++;
 		}
 		

@@ -1,11 +1,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <string.h>
+# include <string.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
+# include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -22,7 +23,7 @@ typedef struct s_flags
 
 typedef struct s_bench
 {
-	char	*strategy;
+	char	strategy;
 	char	*complexity;
 	double	disorder;
 	int		sa;
@@ -40,14 +41,17 @@ typedef struct s_bench
 } t_bench;
 
 int parsing(int argc, char **argv, t_stack **stack, t_flags *flags);
-// void print_error();
 int	ft_strcmp(char *s1, char *s2);
 void free_split(char **split_arr);
 int is_duplicate(t_stack **stack, int number);
+
 void	free_stack(t_stack **stack);
-int	add_to_stack(t_stack **head, int value);
-void	min_extraction(t_stack **a, t_stack **b, t_bench *bench);
+int		add_to_stack(t_stack **head, int value);
 size_t	stack_size(t_stack *head);
+
+void	chunk_sort(t_stack **a, t_stack **b, t_bench *bench);
+void	min_extraction(t_stack **a, t_stack **b, t_bench *bench);
+void	radix_sort(t_stack **a, t_stack **b, t_bench *bench);
 
 void	sa(t_stack **a, int rule, t_bench *bench);
 void	sb(t_stack **b, int rule, t_bench *bench);
@@ -61,5 +65,14 @@ void	rra(t_stack **a, int rule, t_bench *bench);
 void	rrb(t_stack **b, int rule, t_bench *bench);
 void	rrr(t_stack **a, t_stack **b, t_bench *bench);
 
+void display_bench(t_bench *bench);
+
+void		rotate_to_index(t_stack **a, int index, t_bench *bench);
+int			find_in_chunk(t_stack *a, int min, int max);
+void		rotate_min_to_top(t_stack **a, t_bench *bench);
+int	chnk_max(t_stack *a, long long int chunk);
+int	chnk_min(t_stack *a, long long int	chunk);
+int	int_sqrt(int n);
+void	range_numbers(t_stack *a);
 
 #endif
