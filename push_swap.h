@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 20:42:10 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/07 20:43:38 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 21:12:37 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	display_bench(t_bench *bench);
 void	rotate_to_index(t_stack **a, int index, t_bench *bench);
 int		find_in_chunk(t_stack *a, int min, int max);
 void	rotate_min_to_top(t_stack **a, t_bench *bench);
-int		chnk_max(t_stack *a, long long int chunk);
-int		chnk_min(t_stack *a, long long int chunk);
+int		chnk_max(long long int size, long long int chunk);
+int		chnk_min(long long int size, long long int chunk);
 int		int_sqrt(int n);
 void	range_numbers(t_stack *a);
 

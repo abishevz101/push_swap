@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_algorithm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 21:52:40 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 12:25:42 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 21:12:46 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	bubble_sort(t_stack **a, t_bench *bench)
 {
@@ -85,8 +84,8 @@ void	chunk_sort(t_stack **a, t_stack **b, t_bench *bench)
 
 	while (chunk < num_chunks - 1)
 	{
-		min = chnk_min(*a, chunk);
-		max = chnk_max(*a, chunk);
+		min = chnk_min(size, chunk);
+		max = chnk_max(size, chunk);
 		index = find_in_chunk(*a, min, max);
 		while (index != -1)//пока в этом чанке остались элементы
 		{

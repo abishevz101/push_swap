@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_algorithm_help.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:31 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 12:29:57 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 21:11:38 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,27 @@ int	int_sqrt(int n)
 	return (k);
 }
 
-int	chnk_min(t_stack *a, long long int	chunk)
+int	chnk_min(long long int size, long long int	chunk)
 {
 	long long int	chunk_min;
 	long long int	chunk_size;
-	long long int	size;
 	long long int	num_chunks;
 
-	size = stack_size(a);
-	if (size < 1)
-		return (0);
 	num_chunks = int_sqrt(size);
 	chunk_size = (size + num_chunks - 1)/num_chunks;
 	chunk_min = chunk * chunk_size;
 	return (chunk_min);
 }
 
-int	chnk_max(t_stack *a, long long int chunk)
+int	chnk_max(long long int size, long long int chunk)
 {
 	long long int	chunk_max;
 	long long int	chunk_size;
-	long long int	size;
 	long long int	num_chunks;
 
-	size = stack_size(a);
-	if (size < 1)
-		return (0);
 	num_chunks = int_sqrt(size);
 	chunk_size = (size + num_chunks - 1)/num_chunks;
-	chunk_max = chnk_min(a, chunk) + chunk_size - 1;
+	chunk_max = chnk_min(size, chunk) + chunk_size - 1;
 	return (chunk_max);
 }
 

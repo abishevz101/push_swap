@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   c_algorithm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:16:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 12:30:47 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/07 20:09:41 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
+
+static int	*collect_ranks(t_stack *a, size_t size)
+{
+	int		*ranks;
+	t_stack	*current;
+	size_t	i;
+
+	ranks = malloc(sizeof(int) * size);
+	if (!ranks)
+		return (NULL);
+	current = a;
+	i = 0;
+	while (current != NULL)
+	{
+		ranks[i] = count_smaller(a, current->value);
+		current = current->next;
+		i++;
+	}
+	return (ranks);
+}
 
 int	count_smaller(t_stack *a, int target)
 {
@@ -31,15 +51,21 @@ int	count_smaller(t_stack *a, int target)
 void	range_numbers(t_stack *a)
 {
 	t_stack				*current;
-	long long int		range;
+	size_t				i;
+	int					ranks;
 
+	ranks = collect_ranks(a, stack_size(a));
+	if (!ranks)
+		return ;
 	current = a;
+	i = 0;
 	while (current != NULL)
 	{
-		range = count_smaller(a, current->value);
-		current->value = range;
+		current->value = ranks[i];
 		current = current->next;
+		i++;
 	}
+	free (ranks);
 }
 
 int	get_bits(int size)
