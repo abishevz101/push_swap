@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkyryche <vkyryche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:49:53 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/07 20:49:26 by vkyryche         ###   ########.fr       */
+/*   Updated: 2026/10/12 13:31:24 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ double	run_algorithm(t_stack **a, t_flags flags, t_bench *bench)
 	}
 	if (flags.flag == 's' || (flags.flag == 'a'
 			&& (stack_size(*a) <= 5 || disorder < 0.2)))
-		min_extraction(a, &b, bench);
+		choose_path(a, &b, bench);
 	else if (flags.flag == 'm'
 		|| (flags.flag == 'a' && disorder < 0.5))
 		chunk_sort(a, &b, bench);

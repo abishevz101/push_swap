@@ -6,7 +6,7 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 21:17:31 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 21:11:38 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/12 12:49:36 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,33 @@
 int	int_sqrt(int n)
 {
 	int	k;
-	
+
 	k = 0;
 	while (n >= (k + 1) * (k + 1))
 		k = k + 1;
 	return (k);
 }
 
-int	chnk_min(long long int size, long long int	chunk)
+int	chnk_min(int size, int chunk)
 {
-	long long int	chunk_min;
-	long long int	chunk_size;
-	long long int	num_chunks;
+	int	chunk_min;
+	int	chunk_size;
+	int	num_chunks;
 
 	num_chunks = int_sqrt(size);
-	chunk_size = (size + num_chunks - 1)/num_chunks;
+	chunk_size = (size + num_chunks - 1) / num_chunks;
 	chunk_min = chunk * chunk_size;
 	return (chunk_min);
 }
 
-int	chnk_max(long long int size, long long int chunk)
+int	chnk_max(int size, int chunk)
 {
-	long long int	chunk_max;
-	long long int	chunk_size;
-	long long int	num_chunks;
+	int	chunk_max;
+	int	chunk_size;
+	int	num_chunks;
 
 	num_chunks = int_sqrt(size);
-	chunk_size = (size + num_chunks - 1)/num_chunks;
+	chunk_size = (size + num_chunks - 1) / num_chunks;
 	chunk_max = chnk_min(size, chunk) + chunk_size - 1;
 	return (chunk_max);
 }
@@ -56,7 +56,7 @@ int	find_in_chunk(t_stack *a, int min, int max)
 		if (a->value >= min && a->value <= max)
 			return (index);
 		a = a->next;
-		index++;			
+		index++;
 	}
 	return (-1);
 }
@@ -68,7 +68,7 @@ void	rotate_to_index(t_stack **a, int index, t_bench *bench)
 
 	i = 0;
 	size = stack_size(*a);
-	if (index <= size/2)
+	if (index <= size / 2)
 	{
 		while (i < index)
 		{
@@ -83,6 +83,5 @@ void	rotate_to_index(t_stack **a, int index, t_bench *bench)
 			rra(a, 1, bench);
 			i++;
 		}
-		
 	}
 }

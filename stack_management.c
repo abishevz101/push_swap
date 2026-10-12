@@ -37,9 +37,9 @@ void	free_stack(t_stack **stack)
 	}
 }
 
-size_t	stack_size(t_stack *head)
+int	stack_size(t_stack *head)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
 	while (head != NULL)

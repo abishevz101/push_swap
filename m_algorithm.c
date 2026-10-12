@@ -6,7 +6,7 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 21:52:40 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 21:12:46 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/12 13:41:05 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	bubble_sort(t_stack **a, t_bench *bench)
 {
-	t_stack			*current;
-	long long int	size;
-	long long int	i;
-	long long int	swapped;
-	
+	t_stack	*current;
+	int	size;
+	int	i;
+	int	swapped;
+
 	current = *a;
 	size = stack_size(*a);
 	swapped = 1;
-	while(swapped == 1)
+	while (swapped == 1)
 	{
 		i = 0;//sbrasyvajem pered kazhdym prohodom
 		swapped = 0;
@@ -43,11 +43,11 @@ void	bubble_sort(t_stack **a, t_bench *bench)
 
 int	find_insert_index(t_stack *a, int value)
 {
-	t_stack			*current;
-	long long int	index;
-	long long int	best;
-	long long int	best_index;
-	
+	t_stack	*current;
+	int	index;
+	int	best;
+	int	best_index;
+
 	current = a;
 	index = 0;
 	best = INT_MAX;
@@ -67,12 +67,12 @@ int	find_insert_index(t_stack *a, int value)
 
 void	chunk_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	long long int	size;
-	long long int	num_chunks;
-	long long int	chunk;
-	int	min;
-	int	max;
-	int	index;
+	int	size;
+	int	num_chunks;
+	int	chunk;
+	int		min;
+	int		max;
+	int		index;
 
 	bench->complexity = "O(n√n)";
 	size = stack_size(*a);

@@ -6,7 +6,7 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 17:16:14 by zabishev          #+#    #+#             */
-/*   Updated: 2026/10/07 21:16:28 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/12 13:40:49 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	count_smaller(t_stack *a, int target)
 {
-	long long int	count;
-	t_stack			*current;
+	int	count;
+	t_stack	*current;
 
 	count = 0;
 	current = a;
@@ -28,11 +28,11 @@ int	count_smaller(t_stack *a, int target)
 	return (count);
 }
 
-static int	*collect_ranks(t_stack *a, size_t size)
+static int	*collect_ranks(t_stack *a, int size)
 {
 	int		*ranks;
 	t_stack	*current;
-	size_t	i;
+	int	i;
 
 	ranks = malloc(sizeof(int) * size);
 	if (!ranks)
@@ -51,7 +51,7 @@ static int	*collect_ranks(t_stack *a, size_t size)
 void	range_numbers(t_stack *a)
 {
 	t_stack				*current;
-	size_t				i;
+	int				i;
 	int					*ranks;
 
 	ranks = collect_ranks(a, stack_size(a));
@@ -70,8 +70,8 @@ void	range_numbers(t_stack *a)
 
 int	get_bits(int size)
 {
-	long long int	bit;
-	long long int	count;
+	int	bit;
+	int	count;
 
 	bit = 0;
 	count = 1;
@@ -85,11 +85,11 @@ int	get_bits(int size)
 
 void	radix_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	long long int	size;
-	long long int 	bits;
-	long long int	i;
-	long long int	j;
-	
+	int	size;
+	int	bits;
+	int	i;
+	int	j;
+
 	bench->complexity = "O(nlogn)";
 	size = stack_size(*a);
 	if (size < 1)

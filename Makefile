@@ -10,6 +10,7 @@ FILES = main.c \
 		m_algorithm.c \
 		m_algorithm_help.c \
 		c_algorithm.c \
+		sort_for_three.c \
 		bench.c
 NAME = push_swap
 OBJS = $(FILES:.c=.o)

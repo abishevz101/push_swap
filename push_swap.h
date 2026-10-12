@@ -6,7 +6,7 @@
 /*   By: zabishev <zabishev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 20:42:10 by vkyryche          #+#    #+#             */
-/*   Updated: 2026/10/07 21:19:49 by zabishev         ###   ########.fr       */
+/*   Updated: 2026/10/12 13:33:31 by zabishev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		is_duplicate(t_stack **stack, int number);
 
 void	free_stack(t_stack **stack);
 int		add_to_stack(t_stack **head, int value);
-size_t	stack_size(t_stack *head);
+int	stack_size(t_stack *head);
 
 void	chunk_sort(t_stack **a, t_stack **b, t_bench *bench);
 void	min_extraction(t_stack **a, t_stack **b, t_bench *bench);
@@ -82,10 +82,11 @@ void	display_bench(t_bench *bench);
 void	rotate_to_index(t_stack **a, int index, t_bench *bench);
 int		find_in_chunk(t_stack *a, int min, int max);
 void	rotate_min_to_top(t_stack **a, t_bench *bench);
-int		chnk_max(long long int size, long long int chunk);
-int		chnk_min(long long int size, long long int chunk);
+int		chnk_max(int size, int chunk);
+int		chnk_min(int size, int chunk);
 int		int_sqrt(int n);
 void	range_numbers(t_stack *a);
-int	count_smaller(t_stack *a, int target)ж
+int		count_smaller(t_stack *a, int target);
+void	choose_path(t_stack **a, t_stack **b, t_bench *bench);
 
 #endif
