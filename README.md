@@ -229,14 +229,13 @@ Subject thresholds: 100 numbers: < 2000 pass, < 1500 good, < 700 excellent. 500 
 
 # correctness + operation count on random input
 ARG=$(shuf -i 1-1000 -n 100 | tr '\n' ' ')
-./push_swap $ARG | ./checker_linux $ARG
 ./push_swap $ARG | wc -l
 
 # every strategy on the same input
 for f in --simple --medium --complex --adaptive; do ./push_swap $f $ARG | wc -l; done
 
 # benchmark on stderr only
-./push_swap --bench $ARG 2> bench.txt | ./checker_linux $ARG ; cat bench.txt
+./push_swap --bench $ARG 2> bench.txt
 
 # leaks / invalid accesses
 valgrind --leak-check=full --show-leak-kinds=all ./push_swap 3 2 1 4 5 7 6 9 8
@@ -282,11 +281,8 @@ Both learners can explain every part of the code.
 **References**
 
 - 42 subject: *push_swap*, version 1.1.
-- Donald E. Knuth, *The Art of Computer Programming, Volume 3: Sorting and Searching*.
-- [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
 - [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)
 - [Radix sort](https://en.wikipedia.org/wiki/Radix_sort)
-- [Bucket sort](https://en.wikipedia.org/wiki/Bucket_sort)
 - [Sorting algorithm overview](https://en.wikipedia.org/wiki/Sorting_algorithm)
 - [The Norm](https://meta.intra.42.fr/articles/the-norm-v4)
 
@@ -297,5 +293,3 @@ AI tools were used for the following tasks only:
 - Discussing algorithmic options and their complexity in the push_swap operation model, and optimisation ideas for the strategies.
 - Debugging and brainstorming edge cases for the parser and the strategy dispatch.
 - Structuring and writing this README. The AI was also used to run measurements (operation counts, exhaustive tests of small permutations) with a throwaway checker script that is not part of the repository; the numbers above come from those runs.
-
-The algorithms, their implementation and the choices described here were reviewed and are understood by both learners.
