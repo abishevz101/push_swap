@@ -1,1 +1,0 @@
-This file is created just for the testing some git features.
